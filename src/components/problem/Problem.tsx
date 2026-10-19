@@ -1,4 +1,5 @@
 import { useLang } from "../../i18n/LanguageContext";
+import sampleAvatar from "../../assets/sample-avatar.webp";
 import "./Problem.css";
 
 const COPY = {
@@ -30,10 +31,11 @@ function ProfileVisual({ label }: { label: string }) {
   return (
     <div className="pv pv--profile" aria-hidden="true">
       <div className="pv__row">
-        <span className="pv__avatar" />
+        {/* Illustrative sample profile: generic name, not a real LinkedIn profile. */}
+        <img className="pv__avatar" src={sampleAvatar} alt="" width={40} height={40} />
         <div className="pv__stack">
-          <i className="pv__bar pv__bar--w60" />
-          <i className="pv__bar pv__bar--w40 pv__bar--faint" />
+          <span className="pv__name">Daniel Carter</span>
+          <i className="pv__bar pv__bar--w60 pv__bar--faint" />
         </div>
       </div>
       <span className="pv__chip pv__chip--muted">{label}</span>
