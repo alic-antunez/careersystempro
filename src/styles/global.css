@@ -1,0 +1,21 @@
+:root {
+  --navy: #101827;
+  --navy-2: #182236;
+  --orange: #f4a261;
+  --orange-strong: #f7b57d;
+  --text: #ffffff;
+  --muted: #a3adbd;
+  --border: rgba(255, 255, 255, 0.1);
+  --font-heading: "Playfair Display", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--navy);
+  color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}

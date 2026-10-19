@@ -1,0 +1,114 @@
+.problem {
+  background: var(--navy-2);
+  padding-block: clamp(3.5rem, 8vw, 6rem);
+  padding-inline: 1rem;
+}
+
+.problem__container { max-width: 1200px; margin-inline: auto; }
+
+.problem__header { max-width: 40rem; margin: 0 auto clamp(2rem, 4vw, 3rem); text-align: center; }
+
+.problem__eyebrow {
+  margin: 0 0 0.75rem;
+  color: var(--orange);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+}
+
+.problem__title {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+.problem__lead { margin: 0; color: var(--muted); font-size: 1.0625rem; line-height: 1.6; }
+
+.problem__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+/* Soft filled cards: no border or shadow, to keep the section calm */
+.problem__card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 1.5rem;
+  background: var(--navy);
+  border-radius: 0.9rem;
+}
+
+.problem__card-title { margin: 1.5rem 0 0.5rem; font-size: 1.1875rem; font-weight: 700; line-height: 1.3; }
+.problem__card-text { margin: 0; color: var(--muted); font-size: 0.9375rem; line-height: 1.6; }
+
+/* ---------- Lightweight CSS visuals (decorative) ---------- */
+.pv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.75rem;
+  height: 10.5rem;
+  padding: 1rem;
+  border-radius: 0.6rem;
+  background: rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+}
+
+.pv__row { display: flex; align-items: center; gap: 0.75rem; }
+.pv__avatar { flex: none; width: 2.5rem; height: 2.5rem; border-radius: 50%; background: rgba(255, 255, 255, 0.2); }
+.pv__stack { flex: 1; display: flex; flex-direction: column; gap: 0.45rem; min-width: 0; }
+
+.pv__bar { display: block; height: 0.5rem; width: 100%; border-radius: 0.25rem; background: rgba(255, 255, 255, 0.2); }
+.pv__bar--faint { background: rgba(255, 255, 255, 0.1); }
+.pv__bar--w80 { width: 80%; }
+.pv__bar--w60 { width: 60%; }
+.pv__bar--w40 { width: 40%; }
+
+.pv__chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.pv__chip {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(244, 162, 97, 0.16);
+  border: 1px solid rgba(244, 162, 97, 0.4);
+  color: var(--orange);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.pv__chip--muted { background: rgba(255, 255, 255, 0.08); border-color: transparent; color: var(--muted); }
+.pv__chip--missing { background: transparent; border: 1px dashed rgba(255, 255, 255, 0.3); color: var(--muted); }
+
+.pv--plan { flex-direction: row; align-items: center; gap: 0.5rem; }
+.pv__tasks { flex: 1; display: flex; flex-direction: column; gap: 0.5rem; min-width: 0; }
+.pv__tasks--messy .pv__task:nth-child(odd) { transform: translateX(0.35rem) rotate(-2deg); }
+.pv__tasks--messy .pv__task:nth-child(even) { transform: translateX(-0.2rem) rotate(2deg); }
+.pv__task { display: flex; align-items: center; gap: 0.5rem; }
+.pv__box { flex: none; width: 0.8rem; height: 0.8rem; border-radius: 0.2rem; border: 2px solid rgba(255, 255, 255, 0.3); }
+.pv__num {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  background: var(--orange);
+  color: var(--navy);
+  font-size: 0.65rem;
+}
+.pv__tasks--ordered .pv__bar { background: rgba(244, 162, 97, 0.45); }
+.pv__arrow { flex: none; color: var(--orange); font-weight: 700; }
+
+@media (min-width: 768px) {
+  .problem { padding-inline: 2rem; }
+  .problem__grid { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .problem__card { padding: 1.75rem; }
+}

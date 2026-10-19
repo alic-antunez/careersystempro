@@ -1,0 +1,131 @@
+.method {
+  background: var(--navy);
+  padding-block: clamp(3.5rem, 8vw, 6rem);
+  padding-inline: 1rem;
+}
+
+.method__container { max-width: 1200px; margin-inline: auto; }
+
+.method__header { max-width: 40rem; margin: 0 auto clamp(1.5rem, 3vw, 2.25rem); text-align: center; }
+
+.method__eyebrow {
+  margin: 0 0 0.75rem;
+  color: var(--orange);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+}
+
+.method__title {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+.method__lead { margin: 0; color: var(--muted); font-size: 1.0625rem; line-height: 1.6; text-wrap: balance; }
+
+/* ---------- Before / After (first) ---------- */
+.method__ba-title {
+  margin: 0 0 1rem;
+  text-align: center;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--orange-strong);
+}
+
+.method__ba-group + .method__ba-group { margin-top: 1.25rem; }
+.method__ba-label { margin: 0 0 0.6rem; color: var(--muted); font-size: 0.875rem; font-weight: 600; }
+
+.method__ba-pair { display: grid; grid-template-columns: 1fr; gap: 0.85rem; }
+
+.method__ba-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  min-width: 0;
+  padding: 1.1rem 1.25rem;
+  border-radius: 0.9rem;
+}
+.method__ba-card--before { background: rgba(255, 255, 255, 0.05); color: #c3cad6; }
+.method__ba-card--after { background: var(--navy-2); border: 1px solid rgba(244, 162, 97, 0.5); }
+
+.method__badge {
+  align-self: flex-start;
+  margin: 0;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+.method__ba-card--before .method__badge { background: rgba(255, 255, 255, 0.1); color: var(--muted); }
+.method__ba-card--after .method__badge { background: var(--orange); color: var(--navy); }
+
+.method__ba-text { margin: 0; font-size: 1rem; font-weight: 600; line-height: 1.5; overflow-wrap: anywhere; text-wrap: balance; }
+.method__ba-list { margin: 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.9375rem; line-height: 1.55; }
+.method__ba-card--after .method__ba-list li::marker { color: var(--orange); }
+
+.method__note { margin: 1rem 0 0; text-align: center; color: var(--muted); font-size: 0.8125rem; font-style: italic; line-height: 1.5; }
+
+/* ---------- Steps (then): flat, no boxes. Vertical on mobile, one row on desktop ---------- */
+.method__steps {
+  list-style: none;
+  margin: clamp(2rem, 4vw, 2.75rem) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.method__step { position: relative; min-width: 0; padding-left: 3.5rem; }
+
+.method__marker { margin-bottom: 0.25rem; }
+.method__num {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--orange);
+  color: var(--navy);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+/* vertical connector between stacked steps */
+.method__step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 1.2rem;
+  top: 2.75rem;
+  bottom: -1.25rem;
+  width: 2px;
+  background: rgba(244, 162, 97, 0.3);
+}
+
+.method__name { color: var(--orange); font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.16em; }
+.method__step-title { margin: 0 0 0.3rem; font-size: 1.0625rem; font-weight: 700; line-height: 1.3; }
+.method__step-text { margin: 0; color: var(--muted); font-size: 0.9375rem; line-height: 1.55; }
+
+@media (min-width: 768px) {
+  .method { padding-inline: 2rem; }
+  .method__ba-pair { grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+}
+
+@media (min-width: 1000px) {
+  .method__steps { grid-template-columns: repeat(4, 1fr); gap: 1.75rem; }
+  .method__step { padding-left: 0; padding-top: 3.5rem; }
+  /* horizontal connector across the row */
+  .method__step:not(:last-child)::after {
+    left: 2.75rem;
+    top: 1.2rem;
+    bottom: auto;
+    width: calc(100% - 1.5rem);
+    height: 2px;
+  }
+}

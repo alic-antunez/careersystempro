@@ -1,0 +1,143 @@
+.buy {
+  background: var(--navy-2);
+  padding-block: clamp(3.5rem, 8vw, 6rem);
+  padding-inline: 1rem;
+}
+
+.buy__container { max-width: 1200px; margin-inline: auto; }
+
+.buy__header { max-width: 40rem; margin: 0 auto clamp(2rem, 4vw, 2.5rem); text-align: center; }
+
+.buy__eyebrow {
+  margin: 0 0 0.75rem;
+  color: var(--orange);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+}
+
+.buy__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+/* Single offer card: the only strongly framed element in this section */
+.buy__card {
+  max-width: 38rem;
+  margin-inline: auto;
+  padding: 2rem 1.25rem;
+  background: var(--navy);
+  border: 1px solid rgba(244, 162, 97, 0.55);
+  border-radius: 1rem;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+.buy__list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: 0.7rem; }
+.buy__list li { display: flex; align-items: center; gap: 0.75rem; font-size: 1rem; font-weight: 500; line-height: 1.4; text-wrap: balance; }
+
+.buy__icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: var(--orange);
+  color: var(--navy);
+}
+
+.buy__pricing { margin: 1.75rem 0 1.5rem; padding-top: 1.75rem; border-top: 1px solid var(--border); text-align: center; }
+.buy__price { margin: 0; color: var(--orange); font-size: clamp(2.5rem, 7vw, 3.25rem); font-weight: 700; line-height: 1; }
+.buy__terms { margin: 0.5rem 0 0; color: var(--muted); font-size: 0.9375rem; }
+
+.buy__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 3.5rem;
+  padding: 0.9rem 1rem;
+  border-radius: 0.6rem;
+  background: var(--orange);
+  color: var(--navy);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-align: center;
+  text-wrap: balance;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(244, 162, 97, 0.25);
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+.buy__cta:hover { background: var(--orange-strong); transform: translateY(-1px); }
+.buy__cta:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+
+.buy__expect { margin: 1rem 0 0; color: var(--muted); font-size: 0.8125rem; font-style: italic; line-height: 1.55; text-align: center; }
+
+/* FAQ: flat rows separated by hairlines, no boxes */
+.buy__faq { max-width: 44rem; margin: clamp(3rem, 6vw, 4.5rem) auto 0; }
+.buy__faq-title { margin: 0 0 0.75rem; text-align: center; font-family: var(--font-heading); font-size: clamp(1.375rem, 3vw, 1.75rem); font-weight: 800; }
+
+.buy__faq-item { border-bottom: 1px solid var(--border); }
+.buy__faq-item:first-child { border-top: 1px solid var(--border); }
+
+.buy__faq-q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 3.5rem;
+  padding: 0.8rem 0.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  cursor: pointer;
+  list-style: none;
+}
+.buy__faq-q::-webkit-details-marker { display: none; }
+.buy__faq-q:hover { color: var(--orange-strong); }
+.buy__faq-q:focus-visible { outline: 3px solid var(--orange); outline-offset: 2px; border-radius: 0.25rem; }
+
+.buy__chevron {
+  flex: none;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-right: 2px solid var(--orange);
+  border-bottom: 2px solid var(--orange);
+  transform: rotate(45deg);
+  transition: transform 0.15s ease;
+}
+.buy__faq-item[open] .buy__chevron { transform: rotate(-135deg); }
+
+.buy__faq-a { padding: 0 0.25rem 1.1rem; color: var(--muted); font-size: 0.9375rem; line-height: 1.65; overflow-wrap: anywhere; }
+.buy__faq-a p { margin: 0; }
+.buy__faq-a ul { margin: 0.6rem 0 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.3rem; }
+.buy__faq-a li::marker { color: var(--orange); }
+.buy__faq-a strong { color: #fff; }
+
+/* Final CTA: minimal */
+.buy__close { margin-top: clamp(3rem, 6vw, 4.5rem); text-align: center; }
+.buy__close-title {
+  margin: 0 0 1.25rem;
+  font-family: var(--font-heading);
+  font-size: clamp(1.375rem, 3vw, 1.875rem);
+  font-weight: 800;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+@media (min-width: 768px) {
+  .buy { padding-inline: 2rem; }
+  .buy__card { padding: 2.5rem; }
+  .buy__list { grid-template-columns: 1fr 1fr; gap: 0.9rem 1.5rem; }
+  .buy__cta--inline { width: auto; min-width: 22rem; padding-inline: 2.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .buy__cta, .buy__chevron { transition: none; }
+  .buy__cta:hover { transform: none; }
+}
