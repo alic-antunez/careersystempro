@@ -6,6 +6,7 @@ import Audience from "./components/audience/Audience";
 import Purchase from "./components/purchase/Purchase";
 import Footer from "./components/footer/Footer";
 import LanguageSwitch from "./i18n/LanguageSwitch";
+import { Analytics } from "@vercel/analytics/react";
 
 export default function App() {
   return (
@@ -20,6 +21,8 @@ export default function App() {
         <Purchase />
       </main>
       <Footer />
+      {/* Vercel Web Analytics: cookieless page-view counting, active only on Vercel deployments. */}
+      <Analytics />
     </>
   );
 }
