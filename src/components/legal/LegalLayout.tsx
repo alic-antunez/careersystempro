@@ -4,7 +4,7 @@ import { Link } from "../../router";
 import Footer from "../footer/Footer";
 import "./Legal.css";
 
-type Props = { title: string; description: string; children: ReactNode };
+type Props = { title: string; description: string; updated?: string; children: ReactNode };
 
 /** Sets title, description and language for a page, restoring the previous values on leave. */
 function usePageMeta(title: string, description: string) {
@@ -25,7 +25,7 @@ function usePageMeta(title: string, description: string) {
   }, [title, description]);
 }
 
-export default function LegalLayout({ title, description, children }: Props) {
+export default function LegalLayout({ title, description, updated = LEGAL_LAST_UPDATED, children }: Props) {
   usePageMeta(`${title} | CareerSystemPro`, description);
 
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -42,7 +42,7 @@ export default function LegalLayout({ title, description, children }: Props) {
           </Link>
           <article className="legal__doc">
             <h1 ref={headingRef} tabIndex={-1} className="legal__title">{title}</h1>
-            <p className="legal__updated">Last updated: {LEGAL_LAST_UPDATED}</p>
+            <p className="legal__updated">Last updated: {updated}</p>
             {children}
           </article>
         </div>

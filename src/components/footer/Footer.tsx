@@ -1,4 +1,5 @@
 import { useLang } from "../../i18n/LanguageContext";
+import { openPreferences } from "../../consent/consent";
 import { Link, usePath } from "../../router";
 import "./Footer.css";
 
@@ -18,6 +19,7 @@ const COPY = {
     desc: "Practical tools to help IT professionals strengthen their LinkedIn profiles and organize their job search.",
     nav: "Footer",
     legal: "Legal",
+    privacyChoices: "Your Privacy Choices",
     rights: "All rights reserved.",
     links: [
       { label: "Home", href: "#top" },
@@ -29,6 +31,7 @@ const COPY = {
     desc: "Herramientas prácticas para ayudar a profesionales de TI a fortalecer su perfil de LinkedIn y organizar su búsqueda de empleo.",
     nav: "Pie de página",
     legal: "Legal",
+    privacyChoices: "Preferencias de privacidad",
     rights: "Todos los derechos reservados.",
     links: [
       { label: "Inicio", href: "#top" },
@@ -71,6 +74,9 @@ export default function Footer() {
                 <Link href={l.href} lang="en">{l.label}</Link>
               </li>
             ))}
+            <li>
+              <button type="button" className="ft__choices" onClick={openPreferences}>{t.privacyChoices}</button>
+            </li>
           </ul>
         </nav>
 

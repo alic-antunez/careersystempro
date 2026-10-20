@@ -10,7 +10,9 @@ import Footer from "./components/footer/Footer";
 import LanguageSwitch from "./i18n/LanguageSwitch";
 import { useLang } from "./i18n/LanguageContext";
 import { usePath } from "./router";
-import { trackPageView } from "./analytics/ga";
+import { disableAnalytics, trackPageView } from "./analytics/ga";
+import { getConsent, useConsent } from "./consent/consent";
+import ConsentUI from "./components/consent/ConsentUI";
 import RefundPolicy from "./pages/RefundPolicy";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -55,18 +57,28 @@ function HomePage() {
 export default function App() {
   const path = usePath();
   const Page = LEGAL_ROUTES[path] ?? HomePage;
+  const { analytics } = useConsent();
 
   // Runs after the page's own effects, so document.title is already set. Hash anchors
   // (#offer, #faq) do not change `path`, so they do not count as extra page views.
+  // Re-runs when analytics consent flips: a grant sends one page_view for the current page;
+  // trackPageView() is a no-op while consent is denied.
   useEffect(() => {
     trackPageView();
-  }, [path]);
+  }, [path, analytics]);
+
+  // Not granted (undecided, rejected or withdrawn): silence GA4 and clear its cookies.
+  useEffect(() => {
+    if (!analytics) disableAnalytics();
+  }, [analytics]);
 
   return (
     <>
       <Page />
-      {/* Vercel Web Analytics: cookieless page-view counting, active only on Vercel deployments. */}
-      <Analytics />
+      <ConsentUI />
+      {/* Vercel Web Analytics: cookieless, active only on Vercel deployments, and only mounted
+          with analytics consent. beforeSend also drops events if consent is withdrawn later. */}
+      {analytics && <Analytics beforeSend={(event) => (getConsent().analytics ? event : null)} />}
     </>
   );
 }

@@ -24,6 +24,21 @@
 .ft__nav a:hover { color: var(--orange); }
 .ft__nav a:focus-visible { outline: 3px solid var(--orange); outline-offset: 2px; border-radius: 0.25rem; }
 
+.ft__nav .ft__choices {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+.ft__nav .ft__choices:hover { color: var(--orange); }
+.ft__nav .ft__choices:focus-visible { outline: 3px solid var(--orange); outline-offset: 2px; border-radius: 0.25rem; }
+
 .ft__legal { margin-top: 1rem; padding-top: 0.5rem; border-top: 1px solid var(--border); }
 .ft__legal a { font-size: 0.875rem; }
 
