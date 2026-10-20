@@ -1,3 +1,4 @@
+import { trackPurchaseCtaClick } from "../../analytics/ga";
 import { CHECKOUT_URLS } from "../../config/checkout";
 import { useLang } from "../../i18n/LanguageContext";
 import HeroBundlePlaceholder from "./HeroBundlePlaceholder";
@@ -74,7 +75,13 @@ export default function Hero() {
             <p className="hero__reassurance">{t.reassurance}</p>
           </div>
 
-          <a className="hero__cta" href={CHECKOUT_URLS[lang]} target="_blank" rel="noopener noreferrer">
+          <a
+            className="hero__cta"
+            href={CHECKOUT_URLS[lang]}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackPurchaseCtaClick("hero", lang)}
+          >
             {t.cta}
           </a>
 

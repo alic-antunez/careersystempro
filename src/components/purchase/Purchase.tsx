@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { trackPurchaseCtaClick } from "../../analytics/ga";
 import { CHECKOUT_URLS } from "../../config/checkout";
 import { useLang } from "../../i18n/LanguageContext";
 import "./Purchase.css";
@@ -147,7 +148,13 @@ export default function Purchase() {
             <p className="buy__price">{t.price}</p>
             <p className="buy__terms">{t.terms}</p>
           </div>
-          <a className="buy__cta" href={href} target="_blank" rel="noopener noreferrer">
+          <a
+            className="buy__cta"
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackPurchaseCtaClick("offer_card", lang)}
+          >
             {t.cta}
           </a>
           <p className="buy__expect">{t.expect}</p>
@@ -171,7 +178,13 @@ export default function Purchase() {
 
         <div className="buy__close">
           <p className="buy__close-title">{t.closeTitle}</p>
-          <a className="buy__cta buy__cta--inline" href={href} target="_blank" rel="noopener noreferrer">
+          <a
+            className="buy__cta buy__cta--inline"
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackPurchaseCtaClick("final_cta", lang)}
+          >
             {t.cta}
           </a>
         </div>

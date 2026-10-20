@@ -54,3 +54,30 @@ export function trackPageView(): void {
     page_title: document.title,
   });
 }
+
+export type PurchaseCtaLocation = "hero" | "offer_card" | "final_cta";
+
+// Stable identifiers for the two Hotmart products (English and Spanish checkouts differ).
+const PRODUCT_NAMES = { en: "career_toolkit_en", es: "career_toolkit_es" } as const;
+const PRODUCT_PRICE_USD = 19;
+
+/**
+ * Records a click on a purchase CTA. This measures purchase INTENT only: checkout happens on
+ * Hotmart, so no `begin_checkout`/`purchase` event is sent and a click is never a confirmed sale.
+ * Never throws and never touches navigation; if GA4 is off or blocked the click works as usual.
+ */
+export function trackPurchaseCtaClick(ctaLocation: PurchaseCtaLocation, language: "en" | "es"): void {
+  try {
+    if (!isEnabled() || !window.gtag) return;
+    window.gtag("event", "purchase_cta_click", {
+      cta_location: ctaLocation,
+      language,
+      currency: "USD",
+      value: PRODUCT_PRICE_USD,
+      product_name: PRODUCT_NAMES[language],
+      transport_type: "beacon", // delivered even though the checkout opens in a new tab
+    });
+  } catch {
+    /* analytics must never break the purchase flow */
+  }
+}
