@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import { createContext, useContext, useMemo, useState, type ReactNode } from "react";
 
 export type Lang = "en" | "es";
 
@@ -18,14 +18,6 @@ function readStored(): Lang {
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Lang>(readStored);
-
-  useEffect(() => {
-    document.documentElement.lang = lang;
-    document.title =
-      lang === "es"
-        ? "El Kit de Carrera IT | CareerPro System"
-        : "The IT Career Toolkit | CareerPro System";
-  }, [lang]);
 
   const value = useMemo<Ctx>(
     () => ({

@@ -24,9 +24,12 @@
 .ft__nav a:hover { color: var(--orange); }
 .ft__nav a:focus-visible { outline: 3px solid var(--orange); outline-offset: 2px; border-radius: 0.25rem; }
 
+.ft__legal { margin-top: 1rem; padding-top: 0.5rem; border-top: 1px solid var(--border); }
+.ft__legal a { font-size: 0.875rem; }
+
 .ft__copy {
-  margin: 1rem 0 0;
-  padding-top: 1rem;
+  margin: 0.5rem 0 0;
+  padding-top: 0.5rem;
   border-top: 1px solid var(--border);
   color: var(--muted);
   font-size: 0.8125rem;

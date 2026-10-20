@@ -5,8 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "build": "node scripts/check-placeholders.mjs && tsc --noEmit && vite build",
     "typecheck": "tsc --noEmit",
+    "check:legal": "node scripts/check-placeholders.mjs",
+    "check:legal:strict": "node scripts/check-placeholders.mjs --strict",
     "preview": "vite preview"
   },
   "dependencies": {
