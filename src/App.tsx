@@ -9,6 +9,7 @@ import Footer from "./components/footer/Footer";
 import LanguageSwitch from "./i18n/LanguageSwitch";
 import { useLang } from "./i18n/LanguageContext";
 import { usePath } from "./router";
+import { trackPageView } from "./analytics/ga";
 import RefundPolicy from "./pages/RefundPolicy";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -50,7 +51,15 @@ function HomePage() {
 }
 
 export default function App() {
-  const Page = LEGAL_ROUTES[usePath()] ?? HomePage;
+  const path = usePath();
+  const Page = LEGAL_ROUTES[path] ?? HomePage;
+
+  // Runs after the page's own effects, so document.title is already set. Hash anchors
+  // (#offer, #faq) do not change `path`, so they do not count as extra page views.
+  useEffect(() => {
+    trackPageView();
+  }, [path]);
+
   return (
     <>
       <Page />
