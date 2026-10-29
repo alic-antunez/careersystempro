@@ -17,7 +17,7 @@ import { getConsent } from "../consent/consent";
  */
 const LINKEDIN_PARTNER_ID = "10316132";
 const LINKEDIN_HOSTNAMES = ["careersystempro.com", "www.careersystempro.com"];
-const LINKEDIN_SCRIPT_SRC = "https://snap.licdn.com/li.li.analytics/insight.min.js";
+const LINKEDIN_SCRIPT_SRC = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
 // Best-effort cleanup of a first-party click-id cookie LinkedIn may set. Deleting it does NOT
 // disable the tag, and the cookies on linkedin.com are out of reach of this site.
 const LINKEDIN_COOKIES = ["li_fat_id"];
