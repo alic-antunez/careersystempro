@@ -9,7 +9,7 @@
  */
 export const LEGAL_LAST_UPDATED = "October 19, 2026";
 // The Privacy Notice was revised for the consent banner (analytics/advertising choices, GPC),
-// then for the Meta Pixel.
+// then for the Meta Pixel and the LinkedIn Insight Tag.
 export const PRIVACY_NOTICE_UPDATED = "October 29, 2026";
 
 export const LEGAL_INFO: Record<"legalName" | "supportEmail" | "privacyEmail" | "address", string> = {

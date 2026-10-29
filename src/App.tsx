@@ -12,6 +12,7 @@ import { useLang } from "./i18n/LanguageContext";
 import { usePath } from "./router";
 import { disableAnalytics, trackPageView } from "./analytics/ga";
 import { disableMeta, trackMetaPageView } from "./analytics/meta";
+import { cleanupLinkedIn, loadLinkedIn } from "./analytics/linkedin";
 import { getConsent, useConsent } from "./consent/consent";
 import ConsentUI from "./components/consent/ConsentUI";
 import RefundPolicy from "./pages/RefundPolicy";
@@ -80,6 +81,12 @@ export default function App() {
 
   useEffect(() => {
     if (!advertising) disableMeta();
+  }, [advertising]);
+
+  // LinkedIn Insight Tag: advertising consent too. It has no page-view call to repeat per route.
+  useEffect(() => {
+    if (advertising) loadLinkedIn();
+    else cleanupLinkedIn();
   }, [advertising]);
 
   return (
