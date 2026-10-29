@@ -1,4 +1,5 @@
 import { getConsent } from "../consent/consent";
+import { trackMetaPurchaseCtaClick } from "./meta";
 
 /*
  * Google Analytics 4 (gtag.js). The Measurement ID is public by design.
@@ -121,6 +122,7 @@ const PRODUCT_PRICE_USD = 19;
  * blocked or not consented, the click works as usual.
  */
 export function trackPurchaseCtaClick(ctaLocation: PurchaseCtaLocation, language: "en" | "es"): void {
+  trackMetaPurchaseCtaClick(ctaLocation, language); // its own advertising-consent check
   try {
     if (!analyticsAllowed() || !window.gtag) return;
     window.gtag("event", "purchase_cta_click", {

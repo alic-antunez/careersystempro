@@ -11,6 +11,7 @@ import LanguageSwitch from "./i18n/LanguageSwitch";
 import { useLang } from "./i18n/LanguageContext";
 import { usePath } from "./router";
 import { disableAnalytics, trackPageView } from "./analytics/ga";
+import { disableMeta, trackMetaPageView } from "./analytics/meta";
 import { getConsent, useConsent } from "./consent/consent";
 import ConsentUI from "./components/consent/ConsentUI";
 import RefundPolicy from "./pages/RefundPolicy";
@@ -57,7 +58,7 @@ function HomePage() {
 export default function App() {
   const path = usePath();
   const Page = LEGAL_ROUTES[path] ?? HomePage;
-  const { analytics } = useConsent();
+  const { analytics, advertising } = useConsent();
 
   // Runs after the page's own effects, so document.title is already set. Hash anchors
   // (#offer, #faq) do not change `path`, so they do not count as extra page views.
@@ -71,6 +72,15 @@ export default function App() {
   useEffect(() => {
     if (!analytics) disableAnalytics();
   }, [analytics]);
+
+  // Same pattern for the Meta Pixel, gated by the separate advertising consent.
+  useEffect(() => {
+    trackMetaPageView();
+  }, [path, advertising]);
+
+  useEffect(() => {
+    if (!advertising) disableMeta();
+  }, [advertising]);
 
   return (
     <>

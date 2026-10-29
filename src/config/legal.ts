@@ -8,8 +8,9 @@
  * Fail a build while anything is missing:  node scripts/check-placeholders.mjs --strict
  */
 export const LEGAL_LAST_UPDATED = "October 19, 2026";
-// The Privacy Notice was revised for the consent banner (analytics/advertising choices, GPC).
-export const PRIVACY_NOTICE_UPDATED = "October 20, 2026";
+// The Privacy Notice was revised for the consent banner (analytics/advertising choices, GPC),
+// then for the Meta Pixel.
+export const PRIVACY_NOTICE_UPDATED = "October 29, 2026";
 
 export const LEGAL_INFO: Record<"legalName" | "supportEmail" | "privacyEmail" | "address", string> = {
   legalName: "Alic Miguel Antunez Cruz",

@@ -6,8 +6,8 @@ import { useSyncExternalStore } from "react";
  *
  * - Default is DENIED: until the visitor chooses, analytics and advertising are off.
  * - `analytics`: GA4 and Vercel Analytics.
- * - `advertising`: reserved. No advertising tool is installed today (no Meta Pixel, no Google
- *   Ads). A future integration must check `getConsent().advertising` before loading anything.
+ * - `advertising`: the Meta Pixel (src/analytics/meta.ts). Any other advertising tool must
+ *   also check `getConsent().advertising` before loading anything.
  * - Global Privacy Control (GPC): when the browser sends it, advertising is forced off and
  *   cannot be switched on here.
  * - Essential functionality (language preference, checkout links) never depends on consent.
